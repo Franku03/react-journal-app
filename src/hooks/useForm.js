@@ -9,6 +9,11 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
         createValidators();
     }, [ formState ]);
 
+    useEffect(() => {
+        setformState( initialForm );
+    }, [initialForm]);
+    
+
     // useMemo para memorizar el valor de retorno de la función
     const isFormValid = useMemo( () => {
 
