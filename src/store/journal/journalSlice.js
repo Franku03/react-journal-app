@@ -57,6 +57,7 @@ export const journalSlice = createSlice({
         clearNotesLogout: (state) => {
             state.isSaving = false;
             state.messageSaved = '';
+            state.messageDeleted = '';
             state.notes = [];
             state.active = null;
         }
