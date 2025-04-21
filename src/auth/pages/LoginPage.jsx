@@ -25,7 +25,10 @@ export const LoginPage = () => {
   const isAuthenticating = useMemo( () => status === 'checking', [ status ]);
 
   const onSubmit = ( event ) => {
-      event.preventDefault();      
+      event.preventDefault(); 
+      
+      console.log({email, password});
+
       dispatch( startLoginWithEmailPassword({ email, password }) );
   }
 
@@ -35,9 +38,8 @@ export const LoginPage = () => {
   }
 
   return (
-    <AuthLayout title='Login'>
-      
-      <form onSubmit={ onSubmit } className='animate__animated animate__fadeIn animate__faster'>
+    <AuthLayout title='Login'>      
+      <form aria-label="submit-form" onSubmit={ onSubmit } className='animate__animated animate__fadeIn animate__faster'>
         
           <Grid2 container>
             <Grid2 size={{ xs: 12, md: 12 }} sx={{ mt: 2 }}>
@@ -59,6 +61,11 @@ export const LoginPage = () => {
                 placeholder="Contraseña"
                 fullWidth
                 name='password'
+                slotProps={{
+                  input: {
+                    inputProps: {'data-testid': 'password'}
+                  } 
+                }}
                 value={ password }
                 onChange={ onInputChange }
               />
@@ -93,6 +100,7 @@ export const LoginPage = () => {
                 disabled={ isAuthenticating }
                 onClick={ onGoogleSignIn } 
                 variant='contained' 
+                aria-label='google-btn'
                 fullWidth 
               >
                 <Google />

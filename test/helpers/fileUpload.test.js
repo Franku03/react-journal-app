@@ -30,7 +30,7 @@ describe('Pruebas en fileUpload.js', () => {
             resource_type: 'image',
         });
         
-        console.log({ cloudResp });
+        // console.log({ cloudResp });
     });
 
     test('debe retornar null', async () => {
