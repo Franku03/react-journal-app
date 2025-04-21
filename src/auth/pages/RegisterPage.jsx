@@ -47,7 +47,7 @@ export const RegisterPage = () => {
     <AuthLayout title='Crear Cuenta'>
       {/* <h3>FormValid: {isFormValid ? 'Válido' : 'NO válido'}</h3> */}
 
-      <form onSubmit={ onSubmit } className='animate__animated animate__fadeIn animate__faster'>
+      <form aria-label="submit-form" onSubmit={ onSubmit } className='animate__animated animate__fadeIn animate__faster'>
 
           <Grid2 container>
 
@@ -86,6 +86,11 @@ export const RegisterPage = () => {
                 placeholder="Contraseña"
                 fullWidth
                 name="password"
+                slotProps={{
+                  input: {
+                    inputProps: { 'data-testid' : 'password' }
+                  }
+                }}
                 value={ password }
                 onChange={ onInputChange }
                 error={ !!passwordValid && formSubmitted }
